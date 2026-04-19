@@ -258,6 +258,19 @@ nav a:focus-visible {
         color: #94a3b8;
     }
 
+    .content select {
+        width: 100%;
+        padding: 0.95rem 1rem;
+        border-radius: 14px;
+        border: 1px solid rgba(148, 163, 184, 0.18);
+        background: rgba(15, 23, 42, 0.95);
+        color: #f8fafc;
+    }
+
+    .hidden {
+        display: none;
+    }
+
     .content button.btn-commande {
         width: fit-content;
         padding: 0.95rem 1.5rem;

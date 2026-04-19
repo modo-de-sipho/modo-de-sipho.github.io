@@ -23,31 +23,39 @@
         <section>
             <h2>Page de commande</h2>
             <form id="commandeForm" action="#" method="post">
-                <fieldset>
-                    <legend>Type de projet</legend>
-                    <label><input type="radio" name="type_projet" value="web" required> Web</label>
-                    <label><input type="radio" name="type_projet" value="appli_python"> Appli Python</label>
-                    <label><input type="radio" name="type_projet" value="bot_discord"> Bot Discord</label>
-                </fieldset>
+                <label for="type_projet">Type de projet</label>
+                <select id="type_projet" name="type_projet" required>
+                    <option value="">-- Choisissez --</option>
+                    <option value="web">Web</option>
+                    <option value="appli_python">Appli Python</option>
+                    <option value="bot_discord">Bot Discord</option>
+                </select>
 
                 <label for="budget">Budget</label>
-                <input type="text" id="budget" name="budget" placeholder="Ex: 150€" required>
+                <input type="text" id="budget" name="budget" placeholder="Ex: 50€" required>
 
-                <fieldset>
-                    <legend>Comment vous contacter ? <span>(Sélectionnez au moins 1)</span></legend>
-                    <label><input type="checkbox" name="contact_method" value="telephone"> Téléphone</label>
-                    <label><input type="checkbox" name="contact_method" value="email"> Email</label>
-                    <label><input type="checkbox" name="contact_method" value="discord"> Discord</label>
-                </fieldset>
+                <label for="contact_method">Comment vous contacter ?</label>
+                <select id="contact_method" name="contact_method" required>
+                    <option value="">-- Choisissez --</option>
+                    <option value="telephone">Numéro de téléphone</option>
+                    <option value="email">Adresse email</option>
+                    <option value="discord">Discord</option>
+                </select>
 
-                <label for="telephone">Numéro de téléphone</label>
-                <input type="tel" id="telephone" name="telephone" placeholder="+33 6 12 34 56 78">
+                <div class="contact-field contact-telephone hidden">
+                    <label for="telephone">Numéro de téléphone</label>
+                    <input type="tel" id="telephone" name="telephone" placeholder="+33 6 12 34 56 78">
+                </div>
 
-                <label for="email">Adresse email</label>
-                <input type="email" id="email" name="email" placeholder="ton@email.com">
+                <div class="contact-field contact-email hidden">
+                    <label for="email">Adresse email</label>
+                    <input type="email" id="email" name="email" placeholder="ton@email.com">
+                </div>
 
-                <label for="discord">Discord</label>
-                <input type="text" id="discord" name="discord" placeholder="Pseudo#1234">
+                <div class="contact-field contact-discord hidden">
+                    <label for="discord">Discord</label>
+                    <input type="text" id="discord" name="discord" placeholder="Pseudo#1234">
+                </div>
 
                 <button class="btn-commande" type="submit">Envoyer la demande</button>
             </form>

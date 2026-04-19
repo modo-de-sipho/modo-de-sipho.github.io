@@ -23,13 +23,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const TOKEN = window.TOKEN || '';
     const CHANNEL = window.CHANNEL || '';
+    const contactMethodSelect = form.querySelector('#contact_method');
+    const contactFields = {
+        telephone: form.querySelector('.contact-telephone'),
+        email: form.querySelector('.contact-email'),
+        discord: form.querySelector('.contact-discord')
+    };
+    const contactInputs = {
+        telephone: form.querySelector('#telephone'),
+        email: form.querySelector('#email'),
+        discord: form.querySelector('#discord')
+    };
+
+    const updateContactFields = () => {
+        const selected = contactMethodSelect?.value;
+        Object.keys(contactFields).forEach(key => {
+            const field = contactFields[key];
+            const input = contactInputs[key];
+            if (!field || !input) return;
+            if (selected === key) {
+                field.classList.remove('hidden');
+                input.required = true;
+            } else {
+                field.classList.add('hidden');
+                input.required = false;
+            }
+        });
+    };
+
+    contactMethodSelect?.addEventListener('change', updateContactFields);
+    updateContactFields();
 
     form.addEventListener('submit', async (event) => {
         event.preventDefault();
 
-        const checkedMethods = form.querySelectorAll('input[name="contact_method"]:checked');
-        if (checkedMethods.length === 0) {
-            alert('Veuillez sélectionner au moins un moyen de contact.');
+        const contactMethod = form.querySelector('#contact_method')?.value;
+        if (!contactMethod) {
+            alert('Veuillez sélectionner un moyen de contact.');
             return;
         }
 
@@ -38,12 +68,17 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const typeProjet = form.querySelector('input[name="type_projet"]:checked')?.value || 'Non précisé';
+        const typeProjet = form.querySelector('#type_projet')?.value || 'Non précisé';
         const budget = form.querySelector('#budget')?.value || 'Non précisé';
-        const telephone = form.querySelector('#telephone')?.value || 'Non précisé';
-        const email = form.querySelector('#email')?.value || 'Non précisé';
-        const discord = form.querySelector('#discord')?.value || 'Non précisé';
-        const contactMethods = Array.from(checkedMethods).map(input => input.value).join(', ');
+        const telephone = contactMethod === 'telephone' ? form.querySelector('#telephone')?.value || 'Non précisé' : 'Non utilisé';
+        const email = contactMethod === 'email' ? form.querySelector('#email')?.value || 'Non précisé' : 'Non utilisé';
+        const discord = contactMethod === 'discord' ? form.querySelector('#discord')?.value || 'Non précisé' : 'Non utilisé';
+        const contactMethodLabels = {
+            telephone: 'Téléphone',
+            email: 'Email',
+            discord: 'Discord'
+        };
+        const contactMethods = contactMethodLabels[contactMethod] || contactMethod;
 
         const embed = {
             title: 'Nouvelle commande',
@@ -51,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
             fields: [
                 { name: 'Type de projet', value: typeProjet, inline: false },
                 { name: 'Budget', value: budget, inline: false },
-                { name: 'Moyens de contact', value: contactMethods, inline: false },
+                { name: 'Moyen de contact', value: contactMethods, inline: false },
                 { name: 'Téléphone', value: telephone, inline: false },
                 { name: 'Email', value: email, inline: false },
                 { name: 'Discord', value: discord, inline: false }
@@ -76,6 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             alert('Demande envoyée avec succès !');
             form.reset();
+            updateContactFields();
         } catch (error) {
             console.error(error);
             alert('Impossible d\'envoyer la demande. Vérifiez le token, le channel et la configuration.');
