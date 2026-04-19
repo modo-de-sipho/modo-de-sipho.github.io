@@ -1,9 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
     window.scrollTo(0, 0);
 
-    Parse.initialize('d7KtbyR2bRVBfCzQPBzoyGxfMzV68kPdTEAy6oP9', 'aRfbrQBZ76lWGZ17aCFSt07pHV3o2OtebgV0zYYI');
+        Parse.initialize(
+        'd7KtbyR2bRVBfCzQPBzoyGxfMzV68kPdTEAy6oP9',  // App ID
+        'DNLWYl7nkYndrCl4ivfO8CmXGidDTcQQbkXS16tQ'   // JavaScript Key
+    );
     Parse.serverURL = 'https://parseapi.back4app.com/';
-
+    
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
