@@ -1,12 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     window.scrollTo(0, 0);
 
-    Parse.initialize(
-        'd7KtbyR2bRVBfCzQPBzoyGxfMzV68kPdTEAy6oP9',
-        'DNLWYl7nkYndrCl4ivfO8CmXGidDTcQQbkXS16tQ'
-    );
-    Parse.serverURL = 'https://parseapi.back4app.com/';
-
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -85,14 +79,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         try {
-            const result = await Parse.Cloud.run('commande', {
-                typeProjet:    form.querySelector('#type_projet')?.value,
-                budget:        form.querySelector('#budget')?.value,
-                contactMethod: contactMethodLabels[contactMethod],
-                contactValue:  form.querySelector(`#${contactMethod}`)?.value
+            const response = await fetch('https://parseapi.back4app.com/functions/commande', {
+                method: 'POST',
+                headers: {
+                    'X-Parse-Application-Id': 'd7KtbyR2bRVBfCzQPBzoyGxfMzV68kPdTEAy6oP9',
+                    'X-Parse-Javascript-Key': 'DNLWYl7nkYndrCl4ivfO8CmXGidDTcQQbkXS16tQ',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    typeProjet:    form.querySelector('#type_projet')?.value,
+                    budget:        form.querySelector('#budget')?.value,
+                    contactMethod: contactMethodLabels[contactMethod],
+                    contactValue:  form.querySelector(`#${contactMethod}`)?.value
+                })
             });
 
-            if (!result.ok) throw new Error('Erreur serveur');
+            if (!response.ok) throw new Error('Erreur serveur');
 
             localStorage.setItem('lastSubmit', Date.now().toString());
             alert('Demande envoyée avec succès !');
