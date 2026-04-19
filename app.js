@@ -20,6 +20,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('commandeForm');
     if (!form) return;
 
+    const typeProjetSelect = form.querySelector('#type_projet');
+    const descriptionField = form.querySelector('#description-field');
+    const descriptionInput = form.querySelector('#description');
+
+    typeProjetSelect?.addEventListener('change', () => {
+        if (typeProjetSelect.value) {
+            descriptionField.classList.remove('hidden');
+            descriptionInput.required = true;
+        } else {
+            descriptionField.classList.add('hidden');
+            descriptionInput.required = false;
+        }
+    });
+
     const contactMethodSelect = form.querySelector('#contact_method');
     const contactFields = {
         telephone: form.querySelector('.contact-telephone'),
@@ -85,6 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 body: JSON.stringify({
                     typeProjet:    form.querySelector('#type_projet')?.value,
+                    description:   form.querySelector('#description')?.value,
                     budget:        form.querySelector('#budget')?.value,
                     contactMethod: contactMethodLabels[contactMethod],
                     contactValue:  form.querySelector(`#${contactMethod}`)?.value
@@ -99,6 +114,8 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('lastSubmit', Date.now().toString());
             alert('Demande envoyée avec succès !');
             form.reset();
+            descriptionField.classList.add('hidden');
+            descriptionInput.required = false;
             updateContactFields();
         } catch (error) {
             console.error('Erreur :', error);
