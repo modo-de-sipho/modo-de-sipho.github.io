@@ -18,10 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const form = document.getElementById('commandeForm');
-    if (!form) {
-        console.error('Erreur : Formulaire commandeForm non trouvé dans le DOM');
-        return;
-    }
+    if (!form) return;
 
     const contactMethodSelect = form.querySelector('#contact_method');
     const contactFields = {
