@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commande | Sipho</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="menu">
+        <h1>Commande</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html#projects">Mes projets</a></li>
+                <li><a href="index.html#language">Langages maîtrisés</a></li>
+                <li><a href="index.html#about">À propos</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="index.html#commande">Passer commande</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="content">
+        <section>
+            <h2>Page de commande</h2>
+            <form id="commandeForm" action="#" method="post">
+                <fieldset>
+                    <legend>Type de projet</legend>
+                    <label><input type="radio" name="type_projet" value="web" required> Web</label>
+                    <label><input type="radio" name="type_projet" value="appli_python"> Appli Python</label>
+                    <label><input type="radio" name="type_projet" value="bot_discord"> Bot Discord</label>
+                </fieldset>
+
+                <label for="budget">Budget</label>
+                <input type="text" id="budget" name="budget" placeholder="Ex: 150€" required>
+
+                <fieldset>
+                    <legend>Comment vous contacter ? <span>(Sélectionnez au moins 1)</span></legend>
+                    <label><input type="checkbox" name="contact_method" value="telephone"> Téléphone</label>
+                    <label><input type="checkbox" name="contact_method" value="email"> Email</label>
+                    <label><input type="checkbox" name="contact_method" value="discord"> Discord</label>
+                </fieldset>
+
+                <label for="telephone">Numéro de téléphone</label>
+                <input type="tel" id="telephone" name="telephone" placeholder="+33 6 12 34 56 78">
+
+                <label for="email">Adresse email</label>
+                <input type="email" id="email" name="email" placeholder="ton@email.com">
+
+                <label for="discord">Discord</label>
+                <input type="text" id="discord" name="discord" placeholder="Pseudo#1234">
+
+                <button class="btn-commande" type="submit">Envoyer la demande</button>
+            </form>
+            <a class="btn-commande" href="index.html#contact">Retour au portfolio</a>
+        </section>
+    </div>
+</body>
+</html>
