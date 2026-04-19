@@ -91,7 +91,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 })
             });
 
-            if (!response.ok) throw new Error('Erreur serveur');
+            const data = await response.json();
+            console.log('Réponse Back4App :', data);
+
+            if (!response.ok) throw new Error(data.error || 'Erreur serveur');
 
             localStorage.setItem('lastSubmit', Date.now().toString());
             alert('Demande envoyée avec succès !');
