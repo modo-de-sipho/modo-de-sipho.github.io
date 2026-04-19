@@ -19,10 +19,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const form = document.getElementById('commandeForm');
-    if (!form) return;
+    if (!form) {
+        console.error('Erreur : Formulaire commandeForm non trouvé dans le DOM');
+        return;
+    }
+
+    console.log('Formulaire de commande initialisé');
 
     const TOKEN = window.TOKEN || '';
     const CHANNEL = window.CHANNEL || '';
+
+    if (!TOKEN) {
+        console.error('Erreur : TOKEN Discord non défini (window.TOKEN)');
+    }
+    if (!CHANNEL) {
+        console.error('Erreur : CHANNEL Discord non défini (window.CHANNEL)');
+    }
+
     const contactMethodSelect = form.querySelector('#contact_method');
     const contactFields = {
         telephone: form.querySelector('.contact-telephone'),
@@ -35,8 +48,22 @@ document.addEventListener('DOMContentLoaded', () => {
         discord: form.querySelector('#discord')
     };
 
+    // Vérifier si les éléments du DOM sont trouvés
+    if (!contactMethodSelect) {
+        console.error('Erreur : Sélecteur contact_method non trouvé');
+    }
+    Object.keys(contactFields).forEach(key => {
+        if (!contactFields[key]) {
+            console.error(`Erreur : Champ contact ${key} non trouvé`);
+        }
+        if (!contactInputs[key]) {
+            console.error(`Erreur : Input contact ${key} non trouvé`);
+        }
+    });
+
     const updateContactFields = () => {
         const selected = contactMethodSelect?.value;
+        console.log(`Mise à jour des champs de contact : ${selected}`);
         Object.keys(contactFields).forEach(key => {
             const field = contactFields[key];
             const input = contactInputs[key];
@@ -44,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (selected === key) {
                 field.classList.remove('hidden');
                 input.required = true;
+                console.log(`Champ ${key} affiché et requis`);
             } else {
                 field.classList.add('hidden');
                 input.required = false;
@@ -56,14 +84,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     form.addEventListener('submit', async (event) => {
         event.preventDefault();
+        console.log('Soumission du formulaire de commande');
 
         const contactMethod = form.querySelector('#contact_method')?.value;
         if (!contactMethod) {
+            console.error('Erreur : Aucun moyen de contact sélectionné');
             alert('Veuillez sélectionner un moyen de contact.');
             return;
         }
 
         if (!TOKEN || !CHANNEL) {
+            console.error('Erreur : TOKEN ou CHANNEL Discord manquant');
             alert('Le token ou le channel Discord n\'est pas configuré.');
             return;
         }
@@ -80,6 +111,15 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         const contactMethods = contactMethodLabels[contactMethod] || contactMethod;
 
+        console.log('Données collectées :', {
+            typeProjet,
+            budget,
+            contactMethods,
+            telephone,
+            email,
+            discord
+        });
+
         const embed = {
             title: 'Nouvelle commande',
             color: 3447003,
@@ -95,6 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         try {
+            console.log('Envoi vers Discord...');
             const response = await fetch(`https://discord.com/api/v10/channels/${CHANNEL}/messages`, {
                 method: 'POST',
                 headers: {
@@ -106,14 +147,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (!response.ok) {
                 const errorData = await response.json().catch(() => ({}));
+                console.error('Erreur HTTP Discord :', response.status, errorData);
                 throw new Error(errorData.message || 'Erreur lors de l\'envoi au channel Discord');
             }
 
+            console.log('Demande envoyée avec succès à Discord');
             alert('Demande envoyée avec succès !');
             form.reset();
             updateContactFields();
         } catch (error) {
-            console.error(error);
+            console.error('Erreur lors de l\'envoi Discord :', error);
             alert('Impossible d\'envoyer la demande. Vérifiez le token, le channel et la configuration.');
         }
     });
