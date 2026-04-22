@@ -1,1 +1,139 @@
-document['\u0061\u0064\u0064\u0045\u0076\u0065\u006E\u0074\u004C\u0069\u0073\u0074\u0065\u006E\u0065\u0072']("\u0044\u004F\u004D\u0043\u006F\u006E\u0074\u0065\u006E\u0074\u004C\u006F\u0061\u0064\u0065\u0064",()=>{let _0x_0x2f2;const WEBHOOK_URL="\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0064\u0069\u0073\u0063\u006F\u0072\u0064\u002E\u0063\u006F\u006D\u002F\u0061\u0070\u0069\u002F\u0077\u0065\u0062\u0068\u006F\u006F\u006B\u0073\u002F\u0031\u0034\u0039\u0036\u0034\u0039\u0035\u0038\u0032\u0033\u0039\u0033\u0039\u0031\u0037\u0038\u0037\u0030\u0037\u002F\u0078\u005F\u0079\u0035\u004C\u0076\u005F\u0044\u0056\u004E\u006B\u0079\u0072\u004B\u0059\u005A\u0033\u0048\u006A\u004C\u0034\u0070\u005F\u0043\u0066\u0030\u0044\u0053\u0062\u0056\u004A\u0050\u0071\u0070\u0064\u004B\u006D\u0079\u0036\u0076\u0042\u004B\u006A\u0047\u0050\u0038\u0051\u0032\u0059\u0063\u0069\u007A\u0046\u0052\u0062\u0069\u0065\u0061\u004D\u0031\u0033\u006B\u0034\u0077\u004A\u005F\u004D\u0057";_0x_0x2f2=593025^593030;const COOLDOWN_MS=631900^623436;let _0xc200dg;const form=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("mroFednammoc".split("").reverse().join(""));_0xc200dg='\u006A\u006E\u0063\u006D\u0069\u006F';if(!form)return;var _0x5a9e=(282578^282581)+(696352^696354);const typeProjetSelect=form['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072']("\u0023\u0074\u0079\u0070\u0065\u005F\u0070\u0072\u006F\u006A\u0065\u0074");_0x5a9e="dnllhk".split("").reverse().join("");const descriptionField=form['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072']("dleif-noitpircsed#".split("").reverse().join(""));var _0x297d3a=(708150^708151)+(568156^568159);const descriptionInput=form['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072']("\u0023\u0064\u0065\u0073\u0063\u0072\u0069\u0070\u0074\u0069\u006F\u006E");_0x297d3a=(896935^896933)+(345131^345134);typeProjetSelect?.addEventListener("\u0063\u0068\u0061\u006E\u0067\u0065",()=>{if(typeProjetSelect['\u0076\u0061\u006C\u0075\u0065']){descriptionField['\u0063\u006C\u0061\u0073\u0073\u004C\u0069\u0073\u0074']['\u0072\u0065\u006D\u006F\u0076\u0065']("neddih".split("").reverse().join(""));descriptionInput['\u0072\u0065\u0071\u0075\u0069\u0072\u0065\u0064']=!![];}else{descriptionField['\u0063\u006C\u0061\u0073\u0073\u004C\u0069\u0073\u0074']['\u0061\u0064\u0064']("\u0068\u0069\u0064\u0064\u0065\u006E");descriptionInput['\u0072\u0065\u0071\u0075\u0069\u0072\u0065\u0064']=false;}});const contactMethodSelect=form['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072']("\u0023\u0063\u006F\u006E\u0074\u0061\u0063\u0074\u005F\u006D\u0065\u0074\u0068\u006F\u0064");const contactFields={'\u0074\u0065\u006C\u0065\u0070\u0068\u006F\u006E\u0065':form['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072']("\u002E\u0063\u006F\u006E\u0074\u0061\u0063\u0074\u002D\u0074\u0065\u006C\u0065\u0070\u0068\u006F\u006E\u0065"),"email":form['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072']("\u002E\u0063\u006F\u006E\u0074\u0061\u0063\u0074\u002D\u0065\u006D\u0061\u0069\u006C"),"discord":form['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072']("\u002E\u0063\u006F\u006E\u0074\u0061\u0063\u0074\u002D\u0064\u0069\u0073\u0063\u006F\u0072\u0064")};var _0x5fafb=(794627^794626)+(624634^624639);const contactInputs={'\u0074\u0065\u006C\u0065\u0070\u0068\u006F\u006E\u0065':form['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072']("\u0023\u0074\u0065\u006C\u0065\u0070\u0068\u006F\u006E\u0065"),'\u0065\u006D\u0061\u0069\u006C':form['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072']("liame#".split("").reverse().join("")),'\u0064\u0069\u0073\u0063\u006F\u0072\u0064':form['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072']("drocsid#".split("").reverse().join(""))};_0x5fafb="njhbkj".split("").reverse().join("");var _0x0d87fd=(879717^879724)+(730941^730943);const contactMethodLabels={'\u0074\u0065\u006C\u0065\u0070\u0068\u006F\u006E\u0065':"\u0054\u00E9\u006C\u00E9\u0070\u0068\u006F\u006E\u0065",'\u0065\u006D\u0061\u0069\u006C':'Email','\u0064\u0069\u0073\u0063\u006F\u0072\u0064':'Discord'};_0x0d87fd=(913826^913835)+(313125^313124);const updateContactFields=()=>{let _0x4915f;const selected=contactMethodSelect?.value;_0x4915f=(214705^214713)+(753429^753436);Object['\u006B\u0065\u0079\u0073'](contactFields)['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](key=>{const field=contactFields[key];const input=contactInputs[key];if(!field||!input)return;if(selected===key){field['\u0063\u006C\u0061\u0073\u0073\u004C\u0069\u0073\u0074']['\u0072\u0065\u006D\u006F\u0076\u0065']("\u0068\u0069\u0064\u0064\u0065\u006E");input['\u0072\u0065\u0071\u0075\u0069\u0072\u0065\u0064']=!![];}else{field['\u0063\u006C\u0061\u0073\u0073\u004C\u0069\u0073\u0074']['\u0061\u0064\u0064']("neddih".split("").reverse().join(""));input['\u0072\u0065\u0071\u0075\u0069\u0072\u0065\u0064']=false;}});};contactMethodSelect?.addEventListener("\u0063\u0068\u0061\u006E\u0067\u0065",updateContactFields);updateContactFields();form['\u0061\u0064\u0064\u0045\u0076\u0065\u006E\u0074\u004C\u0069\u0073\u0074\u0065\u006E\u0065\u0072']("timbus".split("").reverse().join(""),async event=>{event['\u0070\u0072\u0065\u0076\u0065\u006E\u0074\u0044\u0065\u0066\u0061\u0075\u006C\u0074']();var _0xd6ec=(550919^550916)+(312036^312038);const lastSubmit=localStorage['\u0067\u0065\u0074\u0049\u0074\u0065\u006D']("timbuStsal".split("").reverse().join(""));_0xd6ec=(894634^894639)+(481946^481948);if(lastSubmit&&Date['\u006E\u006F\u0077']()-parseInt(lastSubmit)<COOLDOWN_MS){const secondsLeft=Math['\u0063\u0065\u0069\u006C']((COOLDOWN_MS-(Date['\u006E\u006F\u0077']()-parseInt(lastSubmit)))/(510939^510003));alert(`Veuillez attendre ${secondsLeft} secondes avant de renvoyer.`);return;}const contactMethod=contactMethodSelect?.value;if(!contactMethod){alert(".tcatnoc ed neyom nu rennoitcel\xE9s zelliueV".split("").reverse().join(""));return;}let _0xd0cee;const typeProjet=form['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072']("\u0023\u0074\u0079\u0070\u0065\u005F\u0070\u0072\u006F\u006A\u0065\u0074")?.value;_0xd0cee=753120^753122;let _0x75423a;const description=form['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072']("\u0023\u0064\u0065\u0073\u0063\u0072\u0069\u0070\u0074\u0069\u006F\u006E")?.value;_0x75423a=(996470^996466)+(210240^210245);var _0x5b79c=(563112^563105)+(447514^447518);const budget=form['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072']("\u0023\u0062\u0075\u0064\u0067\u0065\u0074")?.value;_0x5b79c=251991^251989;var _0x3c_0x3ba=(409845^409846)+(804715^804718);const contactLabel=contactMethodLabels[contactMethod];_0x3c_0x3ba=(994228^994226)+(309089^309093);let _0xfb36c;const contactValue=form['\u0071\u0075\u0065\u0072\u0079\u0053\u0065\u006C\u0065\u0063\u0074\u006F\u0072'](`#${contactMethod}`)?.value;_0xfb36c=(639019^639017)+(157757^157755);const embed={'\u0074\u0069\u0074\u006C\u0065':"\uD83D\uDCCB\u0020\u004E\u006F\u0075\u0076\u0065\u006C\u006C\u0065\u0020\u0063\u006F\u006D\u006D\u0061\u006E\u0064\u0065",'\u0063\u006F\u006C\u006F\u0072':0x5865F2,'\u0066\u0069\u0065\u006C\u0064\u0073':[{"name":'Type de projet','\u0076\u0061\u006C\u0075\u0065':typeProjet||"\u2014",'\u0069\u006E\u006C\u0069\u006E\u0065':!![]},{'\u006E\u0061\u006D\u0065':"\u0042\u0075\u0064\u0067\u0065\u0074","value":budget||"\u2014",'\u0069\u006E\u006C\u0069\u006E\u0065':!![]},{"name":"\u0043\u006F\u006E\u0074\u0061\u0063\u0074","value":`${contactLabel} : ${contactValue}`,"inline":false},{'\u006E\u0061\u006D\u0065':"\u0044\u0065\u0073\u0063\u0072\u0069\u0070\u0074\u0069\u006F\u006E","value":description||"\u2014",'\u0069\u006E\u006C\u0069\u006E\u0065':false}],"timestamp":new Date()['\u0074\u006F\u0049\u0053\u004F\u0053\u0074\u0072\u0069\u006E\u0067']()};try{let _0x416bg;const response=await fetch(WEBHOOK_URL,{'\u006D\u0065\u0074\u0068\u006F\u0064':"\u0050\u004F\u0053\u0054",'\u0068\u0065\u0061\u0064\u0065\u0072\u0073':{'Content-Type':"\u0061\u0070\u0070\u006C\u0069\u0063\u0061\u0074\u0069\u006F\u006E\u002F\u006A\u0073\u006F\u006E"},'\u0062\u006F\u0064\u0079':JSON['\u0073\u0074\u0072\u0069\u006E\u0067\u0069\u0066\u0079']({"embeds":[embed]})});_0x416bg=267671^267665;if(!response['\u006F\u006B'])throw new Error(`Erreur webhook : ${response['\u0073\u0074\u0061\u0074\u0075\u0073']}`);localStorage['\u0073\u0065\u0074\u0049\u0074\u0065\u006D']("\u006C\u0061\u0073\u0074\u0053\u0075\u0062\u006D\u0069\u0074",Date['\u006E\u006F\u0077']()['\u0074\u006F\u0053\u0074\u0072\u0069\u006E\u0067']());alert("! s\xE8ccus ceva e\xE9yovne ednameD".split("").reverse().join(""));form['\u0072\u0065\u0073\u0065\u0074']();descriptionField['\u0063\u006C\u0061\u0073\u0073\u004C\u0069\u0073\u0074']['\u0061\u0064\u0064']("neddih".split("").reverse().join(""));descriptionInput['\u0072\u0065\u0071\u0075\u0069\u0072\u0065\u0064']=false;updateContactFields();}catch(error){console['\u0065\u0072\u0072\u006F\u0072']("\u0045\u0072\u0072\u0065\u0075\u0072\u0020\u003A",error);alert("\u0049\u006D\u0070\u006F\u0073\u0073\u0069\u0062\u006C\u0065\u0020\u0064\u0027\u0065\u006E\u0076\u006F\u0079\u0065\u0072\u0020\u006C\u0061\u0020\u0064\u0065\u006D\u0061\u006E\u0064\u0065\u002E\u0020\u0056\u0065\u0075\u0069\u006C\u006C\u0065\u007A\u0020\u0072\u00E9\u0065\u0073\u0073\u0061\u0079\u0065\u0072\u002E");}});});
+document.addEventListener("DOMContentLoaded", () => {
+
+  // ── Formulaire de commande ──────────────────────────────────────────
+  const WEBHOOK_URL = "https://discord.com/api/webhooks/1496495823939178707/x_y5Lv_DVNkyrKYZ3HjL4p_Cf0DSbVJPqpdKmy6vBKjGP8Q2YcizFRbieaM13k4wJ_MW";
+  const COOLDOWN_MS = 8464;
+
+  const form = document.getElementById("commandeForm");
+
+  if (form) {
+    const typeProjetSelect = form.querySelector("#type_projet");
+    const descriptionField = form.querySelector("#description-field");
+    const descriptionInput = form.querySelector("#description");
+    const contactMethodSelect = form.querySelector("#contact_method");
+
+    const contactFields = {
+      telephone: form.querySelector(".contact-telephone"),
+      email: form.querySelector(".contact-email"),
+      discord: form.querySelector(".contact-discord"),
+    };
+
+    const contactInputs = {
+      telephone: form.querySelector("#telephone"),
+      email: form.querySelector("#email"),
+      discord: form.querySelector("#discord"),
+    };
+
+    const contactMethodLabels = {
+      telephone: "Téléphone",
+      email: "Email",
+      discord: "Discord",
+    };
+
+    // Affiche/cache la description selon le type de projet
+    typeProjetSelect?.addEventListener("change", () => {
+      if (typeProjetSelect.value) {
+        descriptionField.classList.remove("hidden");
+        descriptionInput.required = true;
+      } else {
+        descriptionField.classList.add("hidden");
+        descriptionInput.required = false;
+      }
+    });
+
+    // Affiche/cache le champ de contact selon la méthode choisie
+    const updateContactFields = () => {
+      const selected = contactMethodSelect?.value;
+      Object.keys(contactFields).forEach((key) => {
+        const field = contactFields[key];
+        const input = contactInputs[key];
+        if (!field || !input) return;
+        if (selected === key) {
+          field.classList.remove("hidden");
+          input.required = true;
+        } else {
+          field.classList.add("hidden");
+          input.required = false;
+        }
+      });
+    };
+
+    contactMethodSelect?.addEventListener("change", updateContactFields);
+    updateContactFields();
+
+    // Soumission du formulaire → webhook Discord
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const lastSubmit = localStorage.getItem("lastSubmit");
+      if (lastSubmit && Date.now() - parseInt(lastSubmit) < COOLDOWN_MS) {
+        const secondsLeft = Math.ceil(
+          (COOLDOWN_MS - (Date.now() - parseInt(lastSubmit))) / 1000
+        );
+        alert(`Veuillez attendre ${secondsLeft} secondes avant de renvoyer.`);
+        return;
+      }
+
+      const contactMethod = contactMethodSelect?.value;
+      if (!contactMethod) {
+        alert("Veuillez sélectionner un moyen de contact.");
+        return;
+      }
+
+      const typeProjet = form.querySelector("#type_projet")?.value;
+      const description = form.querySelector("#description")?.value;
+      const budget = form.querySelector("#budget")?.value;
+      const contactLabel = contactMethodLabels[contactMethod];
+      const contactValue = form.querySelector(`#${contactMethod}`)?.value;
+
+      const embed = {
+        title: "📋 Nouvelle commande",
+        color: 0x5865f2,
+        fields: [
+          { name: "Type de projet", value: typeProjet || "—", inline: true },
+          { name: "Budget", value: budget || "—", inline: true },
+          { name: "Contact", value: `${contactLabel} : ${contactValue}`, inline: false },
+          { name: "Description", value: description || "—", inline: false },
+        ],
+        timestamp: new Date().toISOString(),
+      };
+
+      try {
+        const response = await fetch(WEBHOOK_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ embeds: [embed] }),
+        });
+
+        if (!response.ok) throw new Error(`Erreur webhook : ${response.status}`);
+
+        localStorage.setItem("lastSubmit", Date.now().toString());
+        alert("Demande envoyée avec succès !");
+        form.reset();
+        descriptionField.classList.add("hidden");
+        descriptionInput.required = false;
+        updateContactFields();
+      } catch (error) {
+        console.error("Erreur :", error);
+        alert("Impossible d'envoyer la demande. Veuillez réessayer.");
+      }
+    });
+  }
+
+  // ── Animation des barres de langages ───────────────────────────────
+  const bars = document.querySelectorAll(".language-bar");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate");
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+
+  bars.forEach((bar) => observer.observe(bar));
+
+});
