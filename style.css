@@ -140,6 +140,20 @@ nav a:focus-visible {
     }
 }
 
+.theme {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.95rem 1.5rem;
+    background: linear-gradient(90deg, #38bdf8, #6366f1);
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 999px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
 .language-bar {
     display: flex;
     justify-content: space-between;
