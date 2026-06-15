@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="sélecteur de thème de sipho">
-    <meta name="keywords" content="thème, site web, devellopeur, graphiste">
+    <meta name="description" content="Galerie de projets de Sipho - Développeur et graphiste">
+    <meta name="keywords" content="thème, site web, devellopeur, graphiste, galerie, projets">
     <meta name="author" content="Sipho">
     <meta name="google-site-verification" content="zL0_w3FIT6I52MC0zx_8s2Uc5XUFtEFdnqBLSEXVTS8" />
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://modo-de-sipho.github.io/theme.html">
-    <meta property="og:title" content="sélecteur de thème de sipho">
-    <meta property="og:description" content="sélecteur de thème de sipho">
+    <meta property="og:title" content="Galerie de projets - Sipho">
+    <meta property="og:description" content="Galerie de projets de Sipho - Développeur et graphiste">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="sélecteur de thème de sipho">
-    <meta name="twitter:description" content="sélecteur de thème">
-    <title>Portfolio | Sipho</title>
+    <meta name="twitter:title" content="Galerie de projets - Sipho">
+    <meta name="twitter:description" content="Galerie de projets de Sipho">
+    <title>Galerie | Sipho</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="canonical" href="https://modo-de-sipho.github.io/theme.html">
@@ -25,8 +25,59 @@
       "@type": "Person",
       "name": "Sipho",
       "url": "https://modo-de-sipho.github.io/theme.html",
-      "description": "sélecteur de thème",
-      "jobTitle": "sélecteur de thème",
+      "description": "Développeur et graphiste spécialisé en Python, JavaScript, bots Discord et création de sites web",
+      "jobTitle": "Développeur & Graphiste"
     }
     </script>
 </head>
+<body>
+    <div class="menu">
+        <h1>Portfolio de Sipho</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html#projects">Mes projets</a></li>
+                <li><a href="index.html#language">Langages maîtrisés</a></li>
+                <li><a href="index.html#about">À propos</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="index.html#commande">Passer commande</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="content">
+        <section id="galerie">
+            <h2>Galerie de projets</h2>
+            <p>Parcourez mes réalisations visuelles — utilisez les flèches ou les touches ← → du clavier.</p>
+
+            <div class="carousel-root">
+                <div class="carousel-track-wrap">
+                    <div class="carousel-window" id="carouselWindow">
+                        <!-- Les slides sont générées dynamiquement par carousel.js -->
+                    </div>
+                    <button class="carousel-btn btn-prev" id="btnPrev" aria-label="Image précédente">&#8249;</button>
+                    <button class="carousel-btn btn-next" id="btnNext" aria-label="Image suivante">&#8250;</button>
+                </div>
+
+                <div class="carousel-dots" id="dotsWrap"></div>
+                <div class="carousel-counter" id="counter"></div>
+                <div class="carousel-label" id="slideLabel"></div>
+
+                <div class="carousel-add-wrap">
+                    <button class="btn-commande carousel-add-btn" onclick="document.getElementById('fileInput').click()">
+                        + Ajouter des images
+                    </button>
+                    <input type="file" id="fileInput" accept="image/*" multiple style="display:none;">
+                </div>
+            </div>
+        </section>
+
+        <section id="retour">
+            <h2>Retourner au portfolio</h2>
+            <p>Découvrez mes compétences, projets et passez commande.</p>
+            <a href="index.html" class="btn-commande">← Retour au portfolio</a>
+        </section>
+    </div>
+
+    <script src="carousel.js"></script>
+</body>
+</html>
