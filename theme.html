@@ -47,27 +47,17 @@
     <div class="content">
         <section id="galerie">
             <h2>Galerie de projets</h2>
-            <p>Parcourez mes réalisations visuelles — utilisez les flèches ou les touches ← → du clavier.</p>
+            <p>Parcourez mes réalisations — utilisez les flèches ou les touches ← → du clavier.</p>
 
             <div class="carousel-root">
                 <div class="carousel-track-wrap">
-                    <div class="carousel-window" id="carouselWindow">
-                        <!-- Les slides sont générées dynamiquement par carousel.js -->
-                    </div>
+                    <div class="carousel-window" id="carouselWindow"></div>
                     <button class="carousel-btn btn-prev" id="btnPrev" aria-label="Image précédente">&#8249;</button>
                     <button class="carousel-btn btn-next" id="btnNext" aria-label="Image suivante">&#8250;</button>
                 </div>
-
                 <div class="carousel-dots" id="dotsWrap"></div>
                 <div class="carousel-counter" id="counter"></div>
                 <div class="carousel-label" id="slideLabel"></div>
-
-                <div class="carousel-add-wrap">
-                    <button class="btn-commande carousel-add-btn" onclick="document.getElementById('fileInput').click()">
-                        + Ajouter des images
-                    </button>
-                    <input type="file" id="fileInput" accept="image/*" multiple style="display:none;">
-                </div>
             </div>
         </section>
 

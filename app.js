@@ -30,7 +30,6 @@ document.addEventListener("DOMContentLoaded", () => {
       discord: "Discord",
     };
 
-    // Affiche/cache la description selon le type de projet
     typeProjetSelect?.addEventListener("change", () => {
       if (typeProjetSelect.value) {
         descriptionField.classList.remove("hidden");
@@ -41,7 +40,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // Affiche/cache le champ de contact selon la méthode choisie
     const updateContactFields = () => {
       const selected = contactMethodSelect?.value;
       Object.keys(contactFields).forEach((key) => {
@@ -61,7 +59,6 @@ document.addEventListener("DOMContentLoaded", () => {
     contactMethodSelect?.addEventListener("change", updateContactFields);
     updateContactFields();
 
-    // Soumission du formulaire → webhook Discord
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
 
@@ -120,7 +117,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ── Animation des barres de langages ───────────────────────────────
   const bars = document.querySelectorAll(".language-bar");
 
   const observer = new IntersectionObserver(

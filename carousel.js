@@ -1,12 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  // ── Données initiales (placeholders) ───────────────────────────────
-  const slides = [
-    { label: "img_1.jpg", src: null },
-    { label: "img_2.jpg", src: null },
-    { label: "img_3.jpg", src: null },
-  ];
 
+  const IMG_FOLDER = "img/";
+  const IMG_EXT    = ".jpg";
+  const MAX_IMAGES = 25;
+
+  let slides  = [];
   let current = 0;
 
   const carouselWindow = document.getElementById("carouselWindow");
@@ -15,31 +14,64 @@ document.addEventListener("DOMContentLoaded", () => {
   const slideLabel     = document.getElementById("slideLabel");
   const btnPrev        = document.getElementById("btnPrev");
   const btnNext        = document.getElementById("btnNext");
-  const fileInput      = document.getElementById("fileInput");
 
-  // ── Construction des slides ─────────────────────────────────────────
+  async function detectImages() {
+    const found = [];
+    for (let i = 1; i <= MAX_IMAGES; i++) {
+      const src = IMG_FOLDER + "img_" + i + IMG_EXT;
+      const ok  = await imageExists(src);
+      if (!ok) break;
+      found.push({ label: "img_" + i + IMG_EXT, src });
+    }
+    return found;
+  }
+
+  function imageExists(src) {
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.onload  = () => resolve(true);
+      img.onerror = () => resolve(false);
+      img.src = src;
+    });
+  }
+
   function buildSlides() {
     carouselWindow.innerHTML = "";
+
+    if (slides.length === 0) {
+      carouselWindow.innerHTML = `
+        <div class="carousel-empty">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.5"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <polyline points="21 15 16 10 5 21"/>
+          </svg>
+          <span>Aucune image trouvée dans <code>${IMG_FOLDER}</code></span>
+          <small>Dépose tes fichiers au format <code>img_1.jpg</code>, <code>img_2.jpg</code>…</small>
+        </div>`;
+      counter.textContent   = "0 / 0";
+      slideLabel.textContent = "";
+      dotsWrap.innerHTML     = "";
+      btnPrev.style.display  = "none";
+      btnNext.style.display  = "none";
+      return;
+    }
+
+    btnPrev.style.display = "";
+    btnNext.style.display = "";
+
     slides.forEach((s, i) => {
       const div = document.createElement("div");
       div.className = "carousel-slide" + (i === current ? " active" : "");
       div.id = "slide-" + i;
 
-      if (s.src) {
-        const img = document.createElement("img");
-        img.src = s.src;
-        img.alt = s.label;
-        div.appendChild(img);
-      } else {
-        div.innerHTML = `
-          <div class="carousel-placeholder">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
-              <polyline points="21 15 16 10 5 21"/>
-            </svg>
-            <span>${s.label}</span>
-          </div>`;
-      }
+      const img = document.createElement("img");
+      img.src   = s.src;
+      img.alt   = s.label;
+      div.appendChild(img);
+
       carouselWindow.appendChild(div);
     });
 
@@ -47,7 +79,6 @@ document.addEventListener("DOMContentLoaded", () => {
     updateUI();
   }
 
-  // ── Points de navigation ────────────────────────────────────────────
   function buildDots() {
     dotsWrap.innerHTML = "";
     slides.forEach((_, i) => {
@@ -59,7 +90,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ── Mise à jour de l'affichage ──────────────────────────────────────
   function updateUI() {
     document.querySelectorAll(".carousel-slide").forEach((el, i) => {
       el.classList.toggle("active", i === current);
@@ -67,11 +97,10 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".dot").forEach((dot, i) => {
       dot.classList.toggle("active", i === current);
     });
-    counter.textContent   = (current + 1) + " / " + slides.length;
+    counter.textContent    = (current + 1) + " / " + slides.length;
     slideLabel.textContent = slides[current].label;
   }
 
-  // ── Navigation ──────────────────────────────────────────────────────
   function goTo(index) {
     current = (index + slides.length) % slides.length;
     updateUI();
@@ -85,25 +114,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.key === "ArrowRight") goTo(current + 1);
   });
 
-  // ── Ajout d'images via input file ──────────────────────────────────
-  fileInput.addEventListener("change", (e) => {
-    const files = Array.from(e.target.files);
-    if (!files.length) return;
-
-    // Libère les anciennes URLs blob
-    slides.forEach(s => { if (s.src) URL.revokeObjectURL(s.src); });
-    slides.length = 0;
-
-    files.forEach(f => {
-      slides.push({ label: f.name, src: URL.createObjectURL(f) });
-    });
-
-    current = 0;
+  detectImages().then((found) => {
+    slides = found;
     buildSlides();
-    fileInput.value = "";
   });
-
-  // ── Init ────────────────────────────────────────────────────────────
-  buildSlides();
 
 });
