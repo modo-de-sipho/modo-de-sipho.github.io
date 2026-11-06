@@ -1,7 +1,4 @@
-/**
- * CursorSwarm - Swarm Rebuild Engine (minimal premium)
- * Visual rebuild: crosshair draws rects, I-beam types text, pen draws lines
- */
+
 
 const SwarmConfig = {
   maxAgents: 20,
@@ -53,9 +50,9 @@ class Vec2 {
   static random() { return new Vec2(Math.random() * 2 - 1, Math.random() * 2 - 1).normalize(); }
 }
 
-// ============================================================================
-// CURSOR AGENT - minimalist crosshair / ibeam / pen
-// ============================================================================
+
+
+
 
 class Agent {
   constructor(index, config, canvasRect, swarm) {
@@ -265,9 +262,9 @@ class Agent {
   resize(canvasRect) { this.canvasRect = canvasRect; }
 }
 
-// ============================================================================
-// TASK QUEUE
-// ============================================================================
+
+
+
 
 class TaskQueue {
   constructor(elements, config) {
@@ -303,9 +300,9 @@ class TaskQueue {
   getTotal() { return this.elements.length; } getCompleted() { return this.completed; } hasTasks() { return this.tasks.length > 0; }
 }
 
-// ============================================================================
-// SWARM ENGINE
-// ============================================================================
+
+
+
 
 class CursorSwarm {
   constructor(options = {}) {

@@ -1,27 +1,24 @@
-/**
- * Portfolio Main Application
- * Handles navigation, forms, scroll reveal, and CursorSwarm integration
- */
 
-// ============================================================================
-// GLOBAL STATE & CONFIG
-// ============================================================================
+
+
+
+
 
 const AppState = {
   swarm: null,
   swarmCompleted: false,
-  isSPA: false, // Set to true if using SPA navigation
+  isSPA: false, 
 };
 
 const AppConfig = {
   swarmSelector: '[data-swarm-target]',
-  formEndpoint: null, // Will be set from data attribute
-  formCooldown: 8464, // ms
+  formEndpoint: null, 
+  formCooldown: 8464, 
 };
 
-// ============================================================================
-// UTILITIES
-// ============================================================================
+
+
+
 
 const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
@@ -45,28 +42,28 @@ const throttle = (fn, limit) => {
   };
 };
 
-// ============================================================================
-// CURSOR SWARM INTEGRATION
-// ============================================================================
+
+
+
 
 async function initCursorSwarm() {
-  // Check if already completed in this session (page load cycle)
+  
   if (AppState.swarmCompleted) {
     revealAllImmediately();
     return;
   }
 
-  // Check for reduced motion
+  
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     revealAllImmediately();
     return;
   }
 
-  // Hide content immediately to prevent flash
+  
   document.body.classList.add('swarm-active');
 
   try {
-    // Dynamic import for code splitting
+    
     const { CursorSwarm } = await import('./cursor-swarm.js?v=4');
 
     AppState.swarm = new CursorSwarm({
@@ -77,7 +74,7 @@ async function initCursorSwarm() {
         AppState.swarmCompleted = true;
         document.body.classList.remove('swarm-active');
         document.body.classList.add('swarm-complete');
-        initScrollReveal(); // Initialize scroll reveal for any elements not covered by swarm
+        initScrollReveal(); 
         initPostSwarmFeatures();
       },
     });
@@ -105,9 +102,9 @@ function revealAllImmediately() {
   initPostSwarmFeatures();
 }
 
-// ============================================================================
-// SCROLL REVEAL (for non-swarm elements / after swarm)
-// ============================================================================
+
+
+
 
 function initScrollReveal() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -127,9 +124,9 @@ function initScrollReveal() {
   $$('.reveal:not(.visible)').forEach(el => observer.observe(el));
 }
 
-// ============================================================================
-// NAVIGATION
-// ============================================================================
+
+
+
 
 function initNavigation() {
   const header = $('.site-header');
@@ -137,7 +134,7 @@ function initNavigation() {
   const nav = $('.nav');
   const navLinks = $$('.nav-link');
 
-  // Scroll effect on header
+  
   const handleScroll = throttle(() => {
     if (window.scrollY > 20) {
       header.classList.add('scrolled');
@@ -147,7 +144,7 @@ function initNavigation() {
   }, 16);
   window.addEventListener('scroll', handleScroll, { passive: true });
 
-  // Mobile menu toggle
+  
   mobileBtn?.addEventListener('click', () => {
     const isOpen = nav.classList.toggle('open');
     mobileBtn.setAttribute('aria-expanded', isOpen);
@@ -155,7 +152,7 @@ function initNavigation() {
     document.body.style.overflow = isOpen ? 'hidden' : '';
   });
 
-  // Close mobile menu on link click
+  
   navLinks.forEach(link => {
     link.addEventListener('click', () => {
       if (window.innerWidth <= 768) {
@@ -166,7 +163,7 @@ function initNavigation() {
     });
   });
 
-  // Smooth scroll for anchor links (non-SPA)
+  
   $$('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       const targetId = this.getAttribute('href');
@@ -182,9 +179,9 @@ function initNavigation() {
   });
 }
 
-// ============================================================================
-// SKILLS ANIMATION
-// ============================================================================
+
+
+
 
 function initSkillsAnimation() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -210,9 +207,9 @@ function initSkillsAnimation() {
   $$('.skill-item').forEach(item => observer.observe(item));
 }
 
-// ============================================================================
-// FORM HANDLING (Command form)
-// ============================================================================
+
+
+
 
 function initCommandForm() {
   const form = $('#commandeForm');
@@ -276,7 +273,7 @@ function initCommandForm() {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    // Cooldown check
+    
     const lastSubmit = localStorage.getItem('lastSubmit');
     if (lastSubmit && Date.now() - parseInt(lastSubmit) < AppConfig.formCooldown) {
       const secondsLeft = Math.ceil((AppConfig.formCooldown - (Date.now() - parseInt(lastSubmit))) / 1000);
@@ -302,7 +299,7 @@ function initCommandForm() {
     submitBtn.textContent = 'Envoi...';
 
     try {
-      // Get webhook URL from data attribute or config
+      
       const webhookUrl = form.dataset.webhook || AppConfig.formEndpoint;
       if (!webhookUrl) throw new Error('Webhook URL not configured');
 
@@ -345,16 +342,16 @@ function initCommandForm() {
   function showFormMessage(element, message) {
     element.textContent = message;
     element.classList.add('show');
-    // Hide the other message
+    
     if (element === successMsg) errorMsg.classList.remove('show');
     else successMsg.classList.remove('show');
     setTimeout(() => element.classList.remove('show'), 8000);
   }
 }
 
-// ============================================================================
-// CAROUSEL (theme.html gallery)
-// ============================================================================
+
+
+
 
 function initCarousel() {
   const carouselWindow = $('#carouselWindow');
@@ -473,7 +470,7 @@ function initCarousel() {
     if (e.key === 'ArrowRight') goTo(current + 1);
   });
 
-  // Touch/swipe support
+  
   let touchStartX = 0;
   carouselWindow.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
   carouselWindow.addEventListener('touchend', e => {
@@ -487,9 +484,9 @@ function initCarousel() {
   });
 }
 
-// ============================================================================
-// POST-SWARM FEATURES
-// ============================================================================
+
+
+
 
 function initPostSwarmFeatures() {
   initNavigation();
@@ -497,7 +494,7 @@ function initPostSwarmFeatures() {
   initCommandForm();
   initCarousel();
 
-  // Add reveal classes to sections for scroll reveal
+  
   $$('section').forEach((section, i) => {
     if (!section.classList.contains('swarm-reveal')) {
       section.classList.add('reveal');
@@ -506,38 +503,38 @@ function initPostSwarmFeatures() {
   });
 }
 
-// ============================================================================
-// INITIALIZATION
-// ============================================================================
+
+
+
 
 function init() {
-  // Always start at the very top of the page (disable browser scroll restoration)
+  
   try { history.scrollRestoration = 'manual'; } catch (_) {}
   try { history.replaceState(null, '', location.pathname + location.search); } catch (_) {}
   window.scrollTo(0, 0);
-  // Mark page as loaded for SPA detection
+  
   document.body.dataset.pageLoad = Date.now();
 
-  // Swarm is handled by the reference implementation (swarm-cursors-ref.js).
-  // Keep content visible so it can be snapshotted, then rebuilt by the swarm.
+  
+  
   AppState.swarmCompleted = true;
   revealAllImmediately();
 }
 
-// Handle SPA navigation if needed
+
 function handleSPANavigation() {
-  // For future SPA implementation
-  // Would re-run initCursorSwarm() only on external navigation
+  
+  
 }
 
-// DOM Ready
+
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', init);
 } else {
   init();
 }
 
-// Export for potential SPA usage
+
 window.PortfolioApp = {
   init,
   initCursorSwarm,
