@@ -2113,6 +2113,9 @@
       this.tempo = 1;
       this.speed = 1;
       this.time = 0;
+  this.lastScrollTime = 0;
+  this._lastViewBot = 0;
+  this._hideTriggered = false;
       this.rulers = { want: 0, t: 0, lastNeed: -10 };
       this.lastScroll = null;
       this.nextId = 0;
@@ -2304,6 +2307,11 @@
       this.lastScroll = vp.sy;
       this.vel = Math.max(this.vel * Math.exp(-dt * 1.2), this.vel * 0.7 + sv * 0.3);
       if (this.started) this.frontier = Math.max(this.frontier, this.viewBot);
+      if (this.viewBot !== this._lastViewBot) {
+        this.lastScrollTime = this.time;
+        this._lastViewBot = this.viewBot;
+        this._hideTriggered = false;
+      }
       const avail = this.started ? this.available() : [];
       this.tempo = clamp(2.1 + this.vel / 900 + (avail.length / Math.max(1, this.cursors.length)) * 0.5, 2.1, 4.5) * this.speed;
 
@@ -2336,10 +2344,21 @@
         if (this.cursors.every((c) => c.follow)) {
           this.flocking = true;
           this.endTime = this.time;
+          this.lastScrollTime = this.time;
+          this._lastViewBot = this.viewBot;
+          this._hideTriggered = false;
           if (this.onComplete) this.onComplete();
         }
       }
       if (this.flocking) {
+        if (!this._hideTriggered && this.time - this.lastScrollTime > 5) {
+          this._hideTriggered = true;
+          for (const c of [...this.cursors]) {
+            if (c.leaving) continue;
+            c.leaving = true;
+            c.gen = this.leave(c);
+          }
+        }
         this.flock(dt);
         return;
       }
@@ -2389,7 +2408,7 @@
         if (c.angle !== 0) c.angle = Math.abs(c.angle) < 0.5 ? 0 : c.angle * (1 - Math.min(1, dt * 10));
         if (!c.task) {
           c.idleFor += dt;
-          if (!c.leaving && c.idleFor > 2.5 && this.cursors.filter((m) => !m.leaving).length > MIN_AGENTS && !c.home) {
+          if (!c.leaving && c.idleFor > 5 && this.cursors.filter((m) => !m.leaving).length > 1) {
             c.leaving = true;
             c.gen = this.leave(c);
           }
@@ -2413,6 +2432,23 @@
           if (c.leaving) {
             if (c.worked) this.retired++;
             this.cursors.splice(this.cursors.indexOf(c), 1);
+          }
+        }
+      }
+      // Mouse avoidance: push cursors away within a radius.
+      if (this.mouse) {
+        const m = this.fromViewport(this.mouse.x, this.mouse.y);
+        const R = 120;
+        for (const c of this.cursors) {
+          if (c.follow) continue;
+          const vx = c.x - m.x;
+          const vy = c.y - m.y;
+          const d = Math.hypot(vx, vy) || 0.01;
+          if (d < R) {
+            const nx = vx / d;
+            const ny = vy / d;
+            c.x = m.x + nx * R;
+            c.y = m.y + ny * R;
           }
         }
       }
@@ -2514,7 +2550,7 @@
         c.x += c.vx * dt;
         c.y += c.vy * dt;
       }
-      const R0 = 48;
+      const R0 = 120;
       let touched = false;
       if (m)
         for (const c of list) {
@@ -2614,18 +2650,8 @@
     }
 
     *idle(c) {
-      for (;;) {
-        const vp = this.vp;
-        const top = this.viewTop;
-        const bot = this.viewBot;
-        const p = { x: rand(vp.sx + vp.vw * 0.17, vp.sx + vp.vw * 0.83), y: rand(top + (bot - top) * 0.2, top + (bot - top) * 0.8) };
-        yield* this.moveTo(c, p, { speed: 0.35 });
-        let w = rand(0.4, 1.4);
-        while (w > 0) {
-          w -= yield;
-          if (c.y < this.viewTop || c.y > this.viewBot) break;
-        }
-      }
+      // Cursors do not move on their own; just wait in place.
+      for (;;) yield;
     }
 
     *leave(c) {
@@ -3544,11 +3570,13 @@
       const wait = 400 - (performance.now() - this.t0);
       if (wait > 0) await sleep(wait);
       if (this.dead) return;
-      this.tour = true;
+      this.tour = false;
       this.engine.start();
     }
 
     async scan() {
+      // Disabled: no auto-scroll; only build what's on screen.
+      return;
       const env = this.env;
       const g = env.geom();
       const H = env.scrollHeight();
