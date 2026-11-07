@@ -16,6 +16,8 @@
     window[KEY].toggle();
     return;
   }
+  // Allow the rebuild on all devices (including mobile), but ensure the
+  // original DOM is restored to a usable state afterwards (see restoreLiveDOM).
 
   // ---------------------------------------------------------------- constants
 
@@ -3732,6 +3734,7 @@
 
     destroy(reveal) {
       unhidePage();
+      restoreLiveDOM();
       if (this.sfx) {
         if (reveal) this.sfx.release();
         this.sfx.close(reveal ? 1.4 : 0.25);
@@ -3781,13 +3784,36 @@
     await nextFrame();
   }
 
+  function restoreLiveDOM() {
+    try {
+      document.body.classList.remove('swarm-active', 'swarm-building');
+      document.body.classList.add('swarm-complete');
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.width = '';
+      document.querySelectorAll('[data-swarm-target]').forEach((el) => {
+        el.style.visibility = '';
+        el.style.opacity = '';
+        el.style.pointerEvents = '';
+        el.classList.remove('swarm-building');
+        el.classList.add('swarm-built');
+      });
+      // Remove any leftover rebuild host
+      document.querySelectorAll('[data-swarm-host], .swarm-host, #swarm-host').forEach((n) => n.remove());
+    } catch (_) {}
+  }
+
   let app = null;
   let lastShot = null;
 
   function start() {
     if (app) return;
     app = new App();
-    app.run().catch((err) => console.error("[swarm-rebuild]", err));
+    app.run().catch((err) => { console.error("[swarm-rebuild]", err); restoreLiveDOM(); });
   }
 
   function stop(reveal) {

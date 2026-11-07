@@ -23,8 +23,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/tokens.css">
-  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/tokens.css?v=5">
+  <link rel="stylesheet" href="assets/css/main.css?v=5">
+  <link rel="stylesheet" href="assets/css/carousel.css?v=5">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -37,9 +38,11 @@
   </script>
 </head>
 <body>
-  
+  <!-- Cursor Swarm Canvas injected by JS -->
 
-  
+  <!-- ─────────────────────────────────────────────────────────────────
+       HEADER / NAVIGATION
+       ───────────────────────────────────────────────────────────────── -->
   <header class="site-header" data-swarm-target>
     <div class="container header-inner">
       <a href="index.html" class="logo" aria-label="Accueil - Sipho">
@@ -53,21 +56,17 @@
           <li><a href="index.html#skills" class="nav-link" data-swarm-target>Compétences</a></li>
           <li><a href="index.html#about" class="nav-link" data-swarm-target>À propos</a></li>
           <li><a href="index.html#contact" class="nav-link" data-swarm-target>Contact</a></li>
-          <li><a href="index.html#commande" class="nav-link nav-link--cta" data-swarm-target>Commander</a></li>
+
         </ul>
       </nav>
 
-      <button class="mobile-menu-btn" aria-expanded="false" aria-label="Ouvrir le menu" aria-controls="main-nav">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="3" y1="6" x2="21" y2="6"></line>
-          <line x1="3" y1="12" x2="21" y2="12"></line>
-          <line x1="3" y1="18" x2="21" y2="18"></line>
-        </svg>
-      </button>
+
     </div>
   </header>
 
-  
+  <!-- ─────────────────────────────────────────────────────────────────
+       GALLERY HERO
+       ───────────────────────────────────────────────────────────────── -->
   <main>
     <section class="hero" style="min-height: 60vh; padding-top: calc(var(--header-height) + var(--space-10));" aria-labelledby="gallery-title" data-swarm-target>
       <div class="hero-content">
@@ -91,7 +90,9 @@
       </div>
     </section>
 
-    
+    <!-- ─────────────────────────────────────────────────────────────────
+         CAROUSEL / GALLERY
+         ───────────────────────────────────────────────────────────────── -->
     <section id="galerie" class="section" aria-labelledby="carousel-title" data-swarm-target>
       <div class="container">
         <header class="section-header" style="margin-bottom: var(--space-6);" data-swarm-target>
@@ -119,7 +120,9 @@
       </div>
     </section>
 
-    
+    <!-- ─────────────────────────────────────────────────────────────────
+         BACK TO PORTFOLIO
+       ───────────────────────────────────────────────────────────────── -->
     <section id="retour" class="section" aria-labelledby="retour-title" data-swarm-target>
       <div class="container" style="text-align: center; max-width: 480px;">
         <header class="section-header" data-swarm-target>
@@ -137,7 +140,9 @@
     </section>
   </main>
 
-  
+  <!-- ─────────────────────────────────────────────────────────────────
+       FOOTER
+       ───────────────────────────────────────────────────────────────── -->
   <footer class="site-footer" role="contentinfo" data-swarm-target>
     <div class="container">
       <div class="footer-grid">
@@ -166,9 +171,6 @@
         <p class="copyright" data-swarm-target>
           © 2024–2025 Sipho. Tous droits réservés.
         </p>
-          <p class="swarm-credit" data-swarm-target>
-            Effet swarm inspire de <a href="https://github.com/DhvanilPatel/swarm-cursors" target="_blank" rel="noopener noreferrer">swarm-cursors</a> par Dhvanil Patel.
-          </p>
         <div class="footer-social" data-swarm-target>
           <a href="https://discord.com/users/_sipho_" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Discord" data-swarm-target>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -181,8 +183,10 @@
     </div>
   </footer>
 
-  
-  <script src="assets/js/swarm-cursors-ref.js"></script>
-<script type="module" src="assets/js/app.js"></script>
+  <!-- ─────────────────────────────────────────────────────────────────
+       SCRIPTS
+       ───────────────────────────────────────────────────────────────── -->
+  <script src="assets/js/swarm-cursors-ref.js?v=6"></script>
+<script type="module" src="assets/js/app.js?v=5"></script>
 </body>
 </html>
