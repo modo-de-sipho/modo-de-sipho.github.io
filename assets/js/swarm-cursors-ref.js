@@ -2351,7 +2351,7 @@
         }
       }
       if (this.flocking) {
-        if (!this._hideTriggered && this.time - this.lastScrollTime > 5) {
+        if (!this._hideTriggered && this.time - this.lastScrollTime > 2.5) {
           this._hideTriggered = true;
           for (const c of [...this.cursors]) {
             if (c.leaving) continue;
@@ -2408,7 +2408,7 @@
         if (c.angle !== 0) c.angle = Math.abs(c.angle) < 0.5 ? 0 : c.angle * (1 - Math.min(1, dt * 10));
         if (!c.task) {
           c.idleFor += dt;
-          if (!c.leaving && c.idleFor > 5 && this.cursors.filter((m) => !m.leaving).length > 1) {
+          if (!c.leaving && c.idleFor > 2.5 && this.cursors.filter((m) => !m.leaving).length > 1) {
             c.leaving = true;
             c.gen = this.leave(c);
           }
