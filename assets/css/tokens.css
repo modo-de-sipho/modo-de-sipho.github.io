@@ -1,55 +1,55 @@
 
 
 :root {
-  
 
-  
-  --color-bg-deepest: #030712;           
-  --color-bg-deep: #0b1220;              
-  --color-bg-elevated: #111827;          
-  --color-bg-elevated-hover: #17213a;    
-  --color-bg-overlay: rgba(11, 18, 32, 0.92);  
 
-  
+
+  --color-bg-deepest: #030712;
+  --color-bg-deep: #0b1220;
+  --color-bg-elevated: #111827;
+  --color-bg-elevated-hover: #17213a;
+  --color-bg-overlay: rgba(11, 18, 32, 0.92);
+
+
   --color-border-subtle: rgba(148, 163, 184, 0.08);
   --color-border-default: rgba(148, 163, 184, 0.14);
   --color-border-emphasis: rgba(56, 189, 248, 0.18);
   --color-border-focus: rgba(56, 189, 248, 0.6);
 
-  
-  --color-text-primary: #f8fafc;         
-  --color-text-secondary: #cbd5e1;       
-  --color-text-muted: #94a3b8;           
-  --color-text-subtle: #64748b;          
-  --color-text-inverse: #0b1220;         
 
-  
-  --color-accent-cyan: #06b6d4;          
+  --color-text-primary: #f8fafc;
+  --color-text-secondary: #cbd5e1;
+  --color-text-muted: #94a3b8;
+  --color-text-subtle: #64748b;
+  --color-text-inverse: #0b1220;
+
+
+  --color-accent-cyan: #06b6d4;
   --color-accent-cyan-dim: rgba(6, 182, 212, 0.15);
   --color-accent-cyan-glow: rgba(6, 182, 212, 0.35);
-  --color-accent-ice: #67e8f9;           
-  --color-accent-violet: #8b5cf6;        
+  --color-accent-ice: #67e8f9;
+  --color-accent-violet: #8b5cf6;
   --color-accent-violet-dim: rgba(139, 92, 246, 0.12);
 
-  
+
   --gradient-primary: linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #8b5cf6 100%);
   --gradient-cyan-ice: linear-gradient(90deg, #06b6d4, #67e8f9);
   --gradient-cyan-violet: linear-gradient(135deg, #06b6d4, #8b5cf6);
   --gradient-surface: linear-gradient(180deg, rgba(17, 24, 39, 0.98), rgba(30, 41, 59, 0.95));
   --gradient-glow: radial-gradient(ellipse at center, rgba(6, 182, 212, 0.08) 0%, transparent 70%);
 
-  
+
   --color-success: #10b981;
   --color-warning: #f59e0b;
   --color-error: #ef4444;
 
-  
+
 
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
   --font-display: 'Space Grotesk', var(--font-sans);
   --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
 
-  
+
   --text-xs: clamp(0.7rem, 0.65rem + 0.25vw, 0.75rem);
   --text-sm: clamp(0.8125rem, 0.75rem + 0.3125vw, 0.875rem);
   --text-base: clamp(0.9375rem, 0.875rem + 0.3125vw, 1rem);
@@ -60,20 +60,20 @@
   --text-4xl: clamp(2.25rem, 1.75rem + 2.5vw, 3.5rem);
   --text-5xl: clamp(3rem, 2rem + 5vw, 5rem);
 
-  
+
   --weight-light: 300;
   --weight-regular: 400;
   --weight-medium: 500;
   --weight-semibold: 600;
   --weight-bold: 700;
 
-  
+
   --leading-tight: 1.1;
   --leading-snug: 1.35;
   --leading-normal: 1.6;
   --leading-relaxed: 1.75;
 
-  
+
   --tracking-tighter: -0.03em;
   --tracking-tight: -0.015em;
   --tracking-normal: 0;
@@ -81,30 +81,30 @@
   --tracking-wider: 0.05em;
   --tracking-widest: 0.1em;
 
-  
+
 
   --space-0: 0;
-  --space-1: 0.25rem;   
-  --space-2: 0.5rem;    
-  --space-3: 0.75rem;   
-  --space-4: 1rem;      
-  --space-5: 1.25rem;   
-  --space-6: 1.5rem;    
-  --space-7: 1.75rem;   
-  --space-8: 2rem;      
-  --space-10: 2.5rem;   
-  --space-12: 3rem;     
-  --space-16: 4rem;     
-  --space-20: 5rem;     
-  --space-24: 6rem;     
-  --space-32: 8rem;     
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-7: 1.75rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
 
-  
+
   --space-section-y: clamp(2rem, 4vw, 4rem);
   --space-section-x: clamp(1.5rem, 4vw, 3rem);
   --space-component-gap: clamp(1rem, 2vw, 1.5rem);
 
-  
+
 
   --radius-none: 0;
   --radius-sm: 6px;
@@ -114,7 +114,7 @@
   --radius-2xl: 32px;
   --radius-full: 9999px;
 
-  
+
 
   --shadow-xs: 0 1px 2px rgba(3, 7, 18, 0.4);
   --shadow-sm: 0 4px 8px -2px rgba(3, 7, 18, 0.5);
@@ -122,12 +122,12 @@
   --shadow-lg: 0 24px 48px -8px rgba(3, 7, 18, 0.6);
   --shadow-xl: 0 32px 64px -12px rgba(3, 7, 18, 0.65);
 
-  
+
   --shadow-glow-sm: 0 0 0 1px rgba(6, 182, 212, 0.15), 0 4px 16px rgba(6, 182, 212, 0.1);
   --shadow-glow-md: 0 0 0 1px rgba(6, 182, 212, 0.2), 0 8px 32px rgba(6, 182, 212, 0.15);
   --shadow-glow-lg: 0 0 0 1px rgba(6, 182, 212, 0.25), 0 16px 48px rgba(6, 182, 212, 0.2);
 
-  
+
 
   --ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
@@ -141,7 +141,7 @@
   --duration-slower: 500ms;
   --duration-slowest: 800ms;
 
-  
+
 
   --z-base: 0;
   --z-content: 1;
@@ -150,16 +150,16 @@
   --z-modal: 30;
   --z-toast: 40;
   --z-tooltip: 50;
-  --z-cursor-swarm: 100;    
-  --z-cursor-swarm-ui: 101; 
+  --z-cursor-swarm: 100;
+  --z-cursor-swarm-ui: 101;
 
-  
+
 
   --container-max: 1120px;
   --container-narrow: 720px;
   --header-height: clamp(64px, 8vh, 80px);
 
-  
+
 
   --swarm-cursor-count: 20;
   --swarm-cursor-min: 5;

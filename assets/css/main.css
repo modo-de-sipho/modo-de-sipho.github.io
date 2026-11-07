@@ -1,11 +1,6 @@
-/* ==========================================================================
-   MAIN STYLESHEET — Dark Premium Portfolio
-   Builds on tokens.css — imports at top of HTML
-   ========================================================================== */
 
-/* ──────────────────────────────────────────────────────────────────────
-   RESET & BASE
-   ────────────────────────────────────────────────────────────────────── */
+
+
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -40,9 +35,7 @@ body {
               color var(--duration-normal) ease;
 }
 
-/* ──────────────────────────────────────────────────────────────────────
-   TYPOGRAPHY UTILITIES
-   ────────────────────────────────────────────────────────────────────── */
+
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
@@ -68,9 +61,7 @@ p { color: var(--color-text-secondary); max-width: 65ch; }
 
 .font-mono { font-family: var(--font-mono); }
 
-/* ──────────────────────────────────────────────────────────────────────
-   LINKS
-   ────────────────────────────────────────────────────────────────────── */
+
 
 a {
   color: var(--color-accent-ice);
@@ -90,9 +81,7 @@ a:focus-visible {
   border-radius: var(--radius-sm);
 }
 
-/* ──────────────────────────────────────────────────────────────────────
-   BUTTONS
-   ────────────────────────────────────────────────────────────────────── */
+
 
 .btn {
   display: inline-flex;
@@ -165,9 +154,7 @@ a:focus-visible {
   border-radius: var(--radius-md);
 }
 
-/* ──────────────────────────────────────────────────────────────────────
-   LAYOUT — Container, Grid, Flex utilities
-   ────────────────────────────────────────────────────────────────────── */
+
 
 .container {
   width: 100%;
@@ -205,9 +192,7 @@ a:focus-visible {
 .gap-5 { gap: var(--space-5); }
 .gap-6 { gap: var(--space-6); }
 
-/* ──────────────────────────────────────────────────────────────────────
-   SECTIONS
-   ────────────────────────────────────────────────────────────────────── */
+
 
 .section {
   padding: var(--space-section-y) 0;
@@ -287,9 +272,7 @@ a:focus-visible {
   transition-delay: 200ms;
 }
 
-/* ──────────────────────────────────────────────────────────────────────
-   HEADER / NAVIGATION
-   ────────────────────────────────────────────────────────────────────── */
+
 
 .site-header {
   position: fixed;
@@ -421,9 +404,7 @@ a:focus-visible {
   }
 }
 
-/* ──────────────────────────────────────────────────────────────────────
-   HERO SECTION
-   ────────────────────────────────────────────────────────────────────── */
+
 
 .hero {
   min-height: 100vh;
@@ -560,9 +541,7 @@ a:focus-visible {
   margin-top: var(--space-1);
 }
 
-/* ──────────────────────────────────────────────────────────────────────
-   CARDS — Project cards, feature cards
-   ────────────────────────────────────────────────────────────────────── */
+
 
 .card {
   background: var(--color-bg-elevated);
@@ -685,9 +664,7 @@ a:focus-visible {
   gap: var(--space-2);
 }
 
-/* ──────────────────────────────────────────────────────────────────────
-   SKILLS / EXPERTISE
-   ────────────────────────────────────────────────────────────────────── */
+
 
 .skills-grid {
   display: grid;
@@ -749,9 +726,7 @@ a:focus-visible {
   transition: width 1.2s var(--ease-out-expo);
 }
 
-/* ──────────────────────────────────────────────────────────────────────
-   ABOUT SECTION
-   ────────────────────────────────────────────────────────────────────── */
+
 
 .about-grid {
   display: grid;
@@ -824,9 +799,7 @@ a:focus-visible {
   color: var(--color-text-muted);
 }
 
-/* ──────────────────────────────────────────────────────────────────────
-   CONTACT / COMMAND FORM
-   ────────────────────────────────────────────────────────────────────── */
+
 
 .form-grid {
   display: grid;
@@ -930,9 +903,7 @@ a:focus-visible {
 .form-success.show,
 .form-error.show { display: block; }
 
-/* ──────────────────────────────────────────────────────────────────────
-   FOOTER
-   ────────────────────────────────────────────────────────────────────── */
+
 
 .site-footer {
   padding: var(--space-12) 0 var(--space-6);
@@ -1028,9 +999,7 @@ a:focus-visible {
   transform: translateY(-2px);
 }
 
-/* ──────────────────────────────────────────────────────────────────────
-   CURSOR SWARM — Canvas overlay styles
-   ────────────────────────────────────────────────────────────────────── */
+
 
 #swarm-canvas {
   position: fixed;
@@ -1049,14 +1018,14 @@ a:focus-visible {
   opacity: 1;
 }
 
-/* Content hidden during swarm rebuild - JS controls visibility */
+
 .swarm-building {
   visibility: hidden !important;
   opacity: 0 !important;
   pointer-events: none !important;
 }
 
-/* Elements being built by swarm */
+
 .swarm-built {
   visibility: visible !important;
   opacity: 1 !important;
@@ -1075,7 +1044,7 @@ a:focus-visible {
   }
 }
 
-/* Typing cursor for text elements being built */
+
 .swarm-typing::after {
   content: '';
   display: inline-block;
@@ -1092,7 +1061,7 @@ a:focus-visible {
   51%, 100% { opacity: 0; }
 }
 
-/* Page state during swarm */
+
 body.swarm-active {
   overflow: hidden;
 }
@@ -1101,9 +1070,7 @@ body.swarm-complete {
   overflow: auto;
 }
 
-/* ──────────────────────────────────────────────────────────────────────
-   SCROLL REVEAL (fallback for non-swarm / after swarm)
-   ────────────────────────────────────────────────────────────────────── */
+
 
 .reveal {
   opacity: 0;
@@ -1117,9 +1084,7 @@ body.swarm-complete {
   transform: translateY(0);
 }
 
-/* ──────────────────────────────────────────────────────────────────────
-   RESPONSIVE — Small screens
-   ────────────────────────────────────────────────────────────────────── */
+
 
 @media (max-width: 480px) {
   html { font-size: 15px; }
@@ -1152,9 +1117,7 @@ body.swarm-complete {
   .hero-stats { flex-direction: column; gap: var(--space-3); }
 }
 
-/* ──────────────────────────────────────────────────────────────────────
-   UTILITIES
-   ────────────────────────────────────────────────────────────────────── */
+
 
 .visually-hidden {
   position: absolute;
@@ -1179,17 +1142,17 @@ body.swarm-complete {
 .mt-auto { margin-top: auto; }
 .mb-auto { margin-bottom: auto; }
 
-/* Focus visible polyfill behavior */
+
 :focus:not(:focus-visible) { outline: none; }
 :focus-visible { outline: 2px solid var(--color-accent-cyan); outline-offset: 2px; }
 
-/* Selection */
+
 ::selection {
   background: var(--color-accent-cyan);
   color: var(--color-text-inverse);
 }
 
-/* Scrollbar */
+
 ::-webkit-scrollbar { width: 8px; height: 8px; }
 ::-webkit-scrollbar-track { background: var(--color-bg-deep); }
 ::-webkit-scrollbar-thumb { background: var(--color-border-default); border-radius: var(--radius-full); }

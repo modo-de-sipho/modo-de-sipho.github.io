@@ -1,5 +1,5 @@
-#!/usr/bin/env python
-# This is a simplified, cleaned version of the portfolio without the confusing #commande references
+
+
 
 import http.server
 import socketserver
@@ -10,11 +10,11 @@ class SimpleHandler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
         if self.path == '/':
             self.path = '/index.html'
-        # Serve the files from the current directory
+
         super().do_GET()
 
     def log_message(self, format, *args):
-        # Suppress log messages
+
         pass
 
 def main():
