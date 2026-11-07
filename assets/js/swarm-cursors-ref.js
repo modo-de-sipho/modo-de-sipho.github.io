@@ -2408,7 +2408,7 @@
         if (c.angle !== 0) c.angle = Math.abs(c.angle) < 0.5 ? 0 : c.angle * (1 - Math.min(1, dt * 10));
         if (!c.task) {
           c.idleFor += dt;
-          if (!c.leaving && c.idleFor > 2.5 && this.cursors.filter((m) => !m.leaving).length > 1) {
+          if (!c.leaving && c.idleFor > 2.5 && this.cursors.filter((m) => !m.leaving).length > 0) {
             c.leaving = true;
             c.gen = this.leave(c);
           }
