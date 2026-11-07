@@ -16,7 +16,7 @@ const AppState = {
 const AppConfig = {
   swarmSelector: '[data-swarm-target]',
   formEndpoint: null, // Will be set from data attribute
-  formCooldown: 10000, // ms
+  formCooldown: 5000, // ms
 };
 
 // ============================================================================
