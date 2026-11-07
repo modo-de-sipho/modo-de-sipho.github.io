@@ -2111,7 +2111,7 @@
       this.frontier = 0;
       this.vel = 0;
       this.tempo = 1;
-      this.speed = 2;
+      this.speed = 1;
       this.time = 0;
       this.rulers = { want: 0, t: 0, lastNeed: -10 };
       this.lastScroll = null;
@@ -3468,7 +3468,7 @@
       this.tour = false;
       this.tourV = 0;
       this.tourAcc = 0;
-      this.speeds = [2, 3, 4];
+      this.speeds = [1, 2, 3];
       this.speedIx = 0;
       this.complete = false;
       this.timing = {};
