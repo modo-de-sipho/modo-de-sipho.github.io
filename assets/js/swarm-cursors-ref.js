@@ -3806,6 +3806,12 @@
 
       // Set up DVD bounce parameters for 10 cursors
 
+      // Capture mouse position as the starting point for bounce
+      const mouseX = this.engine.mouse ? this.engine.mouse.x : innerWidth / 2;
+      const mouseY = this.engine.mouse ? this.engine.mouse.y : innerHeight / 2;
+      E.bounceMouseX = mouseX;
+      E.bounceMouseY = mouseY;
+
       for (let i = 0; i < Math.min(10, E.cursors.length); i++) {
         const c = E.cursors[i];
         // Initialize bounce params
