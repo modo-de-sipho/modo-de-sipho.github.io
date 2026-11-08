@@ -3690,7 +3690,7 @@
             const c = E.cursors[i];
             if (!c.bounceVx) continue;  // skip if not in bounce mode
             // Update bounce position
-            c.bouncePhase += 0.016;  // ~60fps step
+            c.bouncePhase += 0.032;  // faster step
             c.bounceX += c.bounceVx;
             c.bounceY += c.bounceVy;
             // Bounce off left/right edges
@@ -3810,8 +3810,8 @@
         // Initialize bounce params
         c.bounceX = c.x;
         c.bounceY = c.y;
-        c.bounceVx = (Math.random() - 0.5) * 2;  // horizontal velocity
-        c.bounceVy = (Math.random() - 0.5) * 2;  // vertical velocity
+        c.bounceVx = (Math.random() - 0.5) * 4;  // horizontal velocity (faster)
+        c.bounceVy = (Math.random() - 0.5) * 4;  // vertical velocity (faster)
         c.bounceSize = 14 + Math.random() * 6;  // cursor size variant
         c.bouncePhase = 0;  // bounce timer
       }
