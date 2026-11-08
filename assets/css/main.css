@@ -984,6 +984,13 @@ a:focus-visible {
   font-weight: var(--weight-medium);
 }
 
+@keyframes cdBounce {
+  0%, 100% { transform: translate(-50%, 0) scale(1); }
+  50% { transform: translate(-50%, -20px) scale(1.1); }
+}
+
+
+
 .footer-social {
   display: flex;
   gap: var(--space-3);
