@@ -2100,9 +2100,12 @@
       this.tempo = 1;
       this.speed = 1;
       this.time = 0;
-  this.lastScrollTime = 0;
-  this._lastViewBot = 0;
-  this._hideTriggered = false;
+      this.lastScrollTime = 0;
+      this._lastViewBot = 0;
+      this._hideTriggered = false;
+      this.ambient = false;
+      this.ambientCount = 10;
+      this.stallTime = 0;
       this.rulers = { want: 0, t: 0, lastNeed: -10 };
       this.lastScroll = null;
       this.nextId = 0;
@@ -2319,7 +2322,10 @@
         }
       }
 
-      if (!this.flocking && this.started && this.waitCount === 0) {
+      const hasTask = this.cursors.some((c) => c.task);
+      const stalled = !hasTask && avail.length === 0;
+      this.stallTime = stalled ? this.stallTime + dt : 0;
+      if (!this.flocking && this.started && (this.waitCount === 0 || this.stallTime > 2.5)) {
         for (const c of this.cursors)
           if (!c.task && !c.follow) {
             c.follow = true;
@@ -2338,14 +2344,6 @@
         }
       }
       if (this.flocking) {
-        if (!this._hideTriggered && this.time - this.lastScrollTime > 2.5) {
-          this._hideTriggered = true;
-          for (const c of [...this.cursors]) {
-            if (c.leaving) continue;
-            c.leaving = true;
-            c.gen = this.leave(c);
-          }
-        }
         this.flock(dt);
         return;
       }
@@ -2395,10 +2393,6 @@
         if (c.angle !== 0) c.angle = Math.abs(c.angle) < 0.5 ? 0 : c.angle * (1 - Math.min(1, dt * 10));
         if (!c.task) {
           c.idleFor += dt;
-          if (!c.leaving && c.idleFor > 2.5 && this.cursors.filter((m) => !m.leaving).length > 0) {
-            c.leaving = true;
-            c.gen = this.leave(c);
-          }
           if (!c.gen) c.gen = this.idle(c);
         }
         if (c.gen.next(dt).done) {
@@ -2450,7 +2444,9 @@
 
     flock(dt) {
       this.spawnCooldown -= dt;
-      if (this.cursors.length < FLOCK_AGENTS && this.spawnCooldown <= 0 && !this.releasing) {
+      const limit = this.ambient ? this.ambientCount : FLOCK_AGENTS;
+      const alive = this.cursors.filter((c) => !c.leaving);
+      if (alive.length < limit && this.spawnCooldown <= 0 && !this.releasing) {
         const vp = this.vp;
         const left = Math.random() < 0.5;
         const p = this.fromViewport(left ? vp.ox - 30 : vp.ox + vp.vw + 30, vp.oy + rand(0.1, 0.9) * vp.vh);
@@ -2466,7 +2462,19 @@
         }
         return;
       }
-      this.follow(dt, this.cursors);
+      for (const c of [...this.cursors]) {
+        if (!c.leaving) continue;
+        if (!c.gen) c.gen = this.leave(c);
+        if (c.gen.next(dt).done) this.cursors.splice(this.cursors.indexOf(c), 1);
+      }
+      if (this.ambient) {
+        const now = this.cursors.filter((c) => !c.leaving);
+        for (const c of now.slice(this.ambientCount)) {
+          c.leaving = true;
+          c.gen = this.leave(c);
+        }
+      }
+      this.follow(dt, this.cursors.filter((c) => !c.leaving));
     }
 
 
@@ -3744,7 +3752,32 @@
       v.root.querySelector('[data-a="tour"]').hidden = true;
       v.root.querySelector('[data-a="speed"]').hidden = true;
       this.tour = false;
-      setTimeout(() => stop(true), 600);
+      setTimeout(() => this.enterAmbient(), 600);
+    }
+
+    enterAmbient() {
+      if (this.dead || this.engine.releasing) return;
+      const E = this.engine;
+      const v = this.view;
+      unhidePage();
+      restoreLiveDOM();
+      v.host.style.setProperty("pointer-events", "none", "important");
+      for (const sel of [".bg", ".under", ".port", ".over", ".intro", ".ov", ".badges", ".rulers", ".hud"]) {
+        const el = v.root.querySelector(sel);
+        if (el) el.style.display = "none";
+      }
+      v.cursorsEl.style.opacity = "0.35";
+      E.ambient = true;
+      E.flocking = true;
+      E.releasing = false;
+      for (const c of E.cursors) {
+        c.follow = true;
+        c.leaving = false;
+        c.gen = null;
+        c.ov = null;
+        c.sticky = false;
+        c.shape = "arrow";
+      }
     }
 
     destroy(reveal) {

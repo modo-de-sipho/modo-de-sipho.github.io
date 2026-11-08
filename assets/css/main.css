@@ -974,6 +974,16 @@ a:focus-visible {
   color: var(--color-text-subtle);
 }
 
+.footer-credit {
+  font-size: var(--text-xs);
+  color: var(--color-text-subtle);
+}
+
+.footer-credit-name {
+  color: var(--color-text-muted);
+  font-weight: var(--weight-medium);
+}
+
 .footer-social {
   display: flex;
   gap: var(--space-3);
