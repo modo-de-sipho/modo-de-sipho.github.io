@@ -3818,7 +3818,6 @@
       E.bounceStart = performance.now();
 
       
-      }
       E.ambient = true;
       E.flocking = true;
       E.releasing = false;
