@@ -3680,6 +3680,20 @@
         this.engine.step(dt);
         if (this.tour) this.tourStep(dt);
         this.view.render(this.engine);
+        // Update ambient cursor positions (CD-like circular motion)
+        if (this.engine.ambient) {
+          const E = this.engine;
+          const t = (now - E.ambientStart) / 1000;
+          for (let i = 0; i < Math.min(10, E.cursors.length); i++) {
+            const c = E.cursors[i];
+            if (!c.ambientPhase) continue;
+            c.ambientTick = (t * c.ambientSpeed) % (Math.PI * 2);
+            const x = c.ambientRadius * Math.cos(c.ambientPhase + c.ambientTick) + c.ambientX - 14;
+            const y = c.ambientRadius * Math.sin(c.ambientPhase + c.ambientTick) + c.ambientY - 14;
+            c.x = x;
+            c.y = y;
+          }
+        }
         if (!this._hudT || now - this._hudT > 200) {
           this._hudT = now;
           this.updateHud();
@@ -3770,6 +3784,19 @@
       E.ambient = true;
       E.flocking = true;
       E.releasing = false;
+      // Set up CD-like circular motion for 10 ambient cursors
+      const now = performance.now();
+      let t = 0;
+      for (let i = 0; i < Math.min(10, E.cursors.length); i++) {
+        const c = E.cursors[i];
+        c.ambientPhase = (i / 10) * Math.PI * 2;
+        c.ambientSpeed = 0.5 + Math.random() * 0.5;
+        c.ambientRadius = 100 + Math.random() * 50;
+        c.ambientX = c.x;
+        c.ambientY = c.y;
+      }
+      E.ambientStart = now;
+      E.ambientTick = 0;
       for (const c of E.cursors) {
         c.follow = true;
         c.leaving = false;
