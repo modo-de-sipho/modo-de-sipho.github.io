@@ -3685,7 +3685,12 @@
           const E = this.engine;
           const t = (now - E.bounceStart) / 1000;
           const W = innerWidth;
-          const H = innerHeight;
+          const H = Math.max(
+            document.body.scrollHeight,
+            document.documentElement.scrollHeight,
+            document.body.offsetHeight,
+            document.documentElement.offsetHeight
+          );
           for (let i = 0; i < Math.min(10, E.cursors.length); i++) {
             const c = E.cursors[i];
             if (!c.bounceVx) continue;  // skip if not in bounce mode
