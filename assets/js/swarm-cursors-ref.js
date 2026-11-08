@@ -3782,11 +3782,7 @@
       }
       v.cursorsEl.style.opacity = "0.35";
 
-      // Show CD bounce animation
-      var cdBounce = document.querySelector('.cd-bounce');
-      if (cdBounce) {
-        cdBounce.style.opacity = "1";
-        cdBounce.style.transition = "opacity 0.5s ease";
+      
       }
       E.ambient = true;
       E.flocking = true;
