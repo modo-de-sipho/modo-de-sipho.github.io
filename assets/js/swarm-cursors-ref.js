@@ -3683,15 +3683,37 @@
         // Update ambient cursor positions (CD-like circular motion)
         if (this.engine.ambient) {
           const E = this.engine;
-          const t = (now - E.ambientStart) / 1000;
+          const t = (now - E.bounceStart) / 1000;
+          const W = innerWidth;
+          const H = innerHeight;
           for (let i = 0; i < Math.min(10, E.cursors.length); i++) {
             const c = E.cursors[i];
-            if (!c.ambientPhase) continue;
-            c.ambientTick = (t * c.ambientSpeed) % (Math.PI * 2);
-            const x = c.ambientRadius * Math.cos(c.ambientPhase + c.ambientTick) + c.ambientX - 14;
-            const y = c.ambientRadius * Math.sin(c.ambientPhase + c.ambientTick) + c.ambientY - 14;
-            c.x = x;
-            c.y = y;
+            if (!c.bounceVx) continue;  // skip if not in bounce mode
+            // Update bounce position
+            c.bouncePhase += 0.016;  // ~60fps step
+            c.bounceX += c.bounceVx;
+            c.bounceY += c.bounceVy;
+            // Bounce off left/right edges
+            if (c.bounceX - c.bounceSize < 0) {
+              c.bounceX = c.bounceSize;
+              c.bounceVx = -(c.bounceVx * 0.8);  // reverse with damping
+            }
+            if (c.bounceX + c.bounceSize > W) {
+              c.bounceX = W - c.bounceSize;
+              c.bounceVx = -(c.bounceVx * 0.8);
+            }
+            // Bounce off top/bottom edges
+            if (c.bounceY - c.bounceSize < 0) {
+              c.bounceY = c.bounceSize;
+              c.bounceVy = -(c.bounceVy * 0.8);
+            }
+            if (c.bounceY + c.bounceSize > H) {
+              c.bounceY = H - c.bounceSize;
+              c.bounceVy = -(c.bounceVy * 0.8);
+            }
+            // Apply eased position to cursor
+            c.x = c.bounceX;
+            c.y = c.bounceY;
           }
         }
         if (!this._hudT || now - this._hudT > 200) {
@@ -3781,6 +3803,19 @@
         if (el) el.style.display = "none";
       }
       v.cursorsEl.style.opacity = "0.35";
+
+      // Set up DVD bounce parameters for 10 cursors
+      for (let i = 0; i < Math.min(10, E.cursors.length); i++) {
+        const c = E.cursors[i];
+        // Initialize bounce params
+        c.bounceX = c.x;
+        c.bounceY = c.y;
+        c.bounceVx = (Math.random() - 0.5) * 2;  // horizontal velocity
+        c.bounceVy = (Math.random() - 0.5) * 2;  // vertical velocity
+        c.bounceSize = 14 + Math.random() * 6;  // cursor size variant
+        c.bouncePhase = 0;  // bounce timer
+      }
+      E.bounceStart = performance.now();
 
       
       }
