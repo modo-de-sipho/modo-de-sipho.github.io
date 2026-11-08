@@ -3805,17 +3805,22 @@
       v.cursorsEl.style.opacity = "0.35";
 
       // Set up DVD bounce parameters for 10 cursors
+
       for (let i = 0; i < Math.min(10, E.cursors.length); i++) {
         const c = E.cursors[i];
         // Initialize bounce params
-        c.bounceX = c.x;
-        c.bounceY = c.y;
-        c.bounceVx = (Math.random() - 0.5) * 4;  // horizontal velocity (faster)
-        c.bounceVy = (Math.random() - 0.5) * 4;  // vertical velocity (faster)
-        c.bounceSize = 14 + Math.random() * 6;  // cursor size variant
-        c.bouncePhase = 0;  // bounce timer
+// Start cursors near mouse position with random offsets
+const mouseX = E.bounceMouseX || innerWidth / 2;
+const mouseY = E.bounceMouseY || innerHeight / 2;
+const offsetX = (Math.random() - 0.5) * 200;
+const offsetY = (Math.random() - 0.5) * 200;
+c.bounceX = mouseX + offsetX;
+c.bounceY = mouseY + offsetY;
+c.bounceVx = (Math.random() - 0.5) * 4;  // horizontal velocity (faster)
+c.bounceVy = (Math.random() - 0.5) * 4;  // vertical velocity (faster)
+c.bounceSize = 14 + Math.random() * 6;  // cursor size variant
+c.bouncePhase = 0;  // bounce timer
       }
-      E.bounceStart = performance.now();
 
       
       E.ambient = true;
