@@ -46,47 +46,6 @@ const throttle = (fn, limit) => {
 
 
 
-async function initCursorSwarm() {
-
-  if (AppState.swarmCompleted) {
-    revealAllImmediately();
-    return;
-  }
-
-
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    revealAllImmediately();
-    return;
-  }
-
-
-  document.body.classList.add('swarm-active');
-
-  try {
-
-    const { CursorSwarm } = await import('./cursor-swarm.js?v=4');
-
-    AppState.swarm = new CursorSwarm({
-      selector: AppConfig.swarmSelector,
-      maxAgents: 20,
-      minAgents: 5,
-      onComplete: () => {
-        AppState.swarmCompleted = true;
-        document.body.classList.remove('swarm-active');
-        document.body.classList.add('swarm-complete');
-        initScrollReveal();
-        initPostSwarmFeatures();
-      },
-    });
-
-    AppState.swarm.init();
-    AppState.swarm.start();
-  } catch (error) {
-    console.warn('CursorSwarm failed to load, falling back to immediate reveal:', error);
-    revealAllImmediately();
-  }
-}
-
 function revealAllImmediately() {
   const targets = $$(AppConfig.swarmSelector);
   targets.forEach(el => {
@@ -514,6 +473,5 @@ if (document.readyState === 'loading') {
 
 window.PortfolioApp = {
   init,
-  initCursorSwarm,
   revealAllImmediately,
 };

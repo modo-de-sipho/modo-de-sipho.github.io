@@ -1611,7 +1611,7 @@
       for (const old of document.querySelectorAll("swarm-rebuild")) old.remove();
       const host = document.createElement("swarm-rebuild");
       host.style.cssText =
-        "all:initial !important;position:fixed !important;inset:0 !important;z-index:2147483647 !important;display:block !important;pointer-events:auto !important;contain:strict !important;opacity:1;transition:opacity .6s ease;";
+        "all:initial !important;position:fixed !important;inset:0 !important;z-index:2147483647 !important;display:block !important;pointer-events:none !important;contain:strict !important;opacity:1;transition:opacity .6s ease;";
       env.host = host;
       this.host = host;
       const root = host.attachShadow({ mode: "open" });
@@ -1632,7 +1632,6 @@
   <div class="bar"><i></i></div>
   <button data-a="tour" title="Auto-scroll while the swarm builds">Tour</button>
   <button data-a="speed" title="Build speed">1×</button>
-  <button data-a="sound" class="snd" title="Sound (M)"></button>
   <button data-a="live" class="pri" hidden title="Fade back to the real page">Go live</button>
   <button data-a="replay" hidden title="Wipe and rebuild again">Replay</button>
   <button data-a="close" class="x" title="Exit (Esc)">✕</button>
@@ -3518,8 +3517,7 @@
       const shotP = this.loadShot();
       this.view = new View(this.env);
       this.engine = new Engine(this.view);
-      this.sfx = new Sound();
-      this.sfx.init();
+      this.sfx = { on: false, blocked: false, init() {}, intro() {}, start() {}, place() {}, press() {}, key() {}, grow() {}, snap() {}, setOn() {}, resume() {}, finale() {}, release() {}, close() {}, log() {} };
       this.engine.sfx = this.sfx;
       this.engine.onStart = () => this.view.intro.classList.add("gone");
       this.engine.onComplete = () => this.onComplete();
@@ -3528,7 +3526,6 @@
       this.raf = requestAnimationFrame((t) => this.frame(t));
       await nextFrame();
       this.renderSoundBtn();
-      this.sfx.intro();
       this.view.bg.classList.add("on");
       this.view.intro.classList.add("on");
       const mark = (k) => (this.timing[k] = Math.round(performance.now() - this.t0));
