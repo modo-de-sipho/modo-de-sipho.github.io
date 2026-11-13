@@ -28,9 +28,7 @@ body {
   line-height: var(--leading-normal);
   color: var(--color-text-secondary);
   background-color: var(--color-bg-deep);
-  background-image: var(--gradient-glow), var(--gradient-surface);
-  background-attachment: fixed, scroll;
-  background-size: cover, auto;
+  background-image: none;
   transition: background-color var(--duration-normal) ease,
               color var(--duration-normal) ease;
 }
@@ -591,6 +589,7 @@ a:focus-visible {
   border-radius: var(--radius-lg);
   color: var(--color-accent-cyan);
   margin-bottom: var(--space-4);
+  font-size: 24px;
   transition: background var(--duration-normal) ease,
               color var(--duration-normal) ease,
               transform var(--duration-normal) var(--ease-spring);

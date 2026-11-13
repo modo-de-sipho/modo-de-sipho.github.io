@@ -240,7 +240,7 @@ function initCommandForm() {
       if (!webhookUrl) throw new Error('Webhook URL not configured');
 
       const embed = {
-        title: '📋 Nouvelle commande',
+        title: 'Nouvelle commande',
         color: 0x06b6d4,
         fields: [
           { name: 'Type de projet', value: typeProjet || '—', inline: true },

@@ -1634,7 +1634,7 @@
   <button data-a="speed" title="Build speed">1×</button>
   <button data-a="live" class="pri" hidden title="Fade back to the real page">Go live</button>
   <button data-a="replay" hidden title="Wipe and rebuild again">Replay</button>
-  <button data-a="close" class="x" title="Exit (Esc)">✕</button>
+  <button data-a="close" class="x" title="Exit (Esc)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
 </div>`;
       const $ = (s) => root.querySelector(s);
       this.bg = $(".bg");
